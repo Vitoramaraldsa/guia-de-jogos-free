@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guia_de_jogos_gratis/Telas/Mobile.dart';
+import 'package:guia_de_jogos_gratis/Telas/Playstation.dart';
+import 'package:guia_de_jogos_gratis/Telas/Windows.dart';
+import 'package:guia_de_jogos_gratis/Telas/Xbox.dart';
 import 'package:guia_de_jogos_gratis/Widgets/CardWiget.dart';
 import 'package:guia_de_jogos_gratis/Utils/ThemeConfig.dart';
 
@@ -62,16 +66,16 @@ class _HomePageState extends State<HomePage> {
                 children: new List.generate(4, (int index){
                   switch(index){
                     case 0:
-                      return new ListTile(title: Text("Microsoft Windows (PC)",style: TextStyle(fontFamily: "dhyana-bold" ,color: Colors.white,fontSize: 11)), leading: new Image.asset("images/janelas.png", height: _heigthNavigatorImages-9), tileColor: _temaApp.cprimaria,);
+                      return new GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Windows()));},child: ListTile(title: Text("Microsoft Windows (PC)",style: TextStyle(fontFamily: "dhyana-bold" ,color: Colors.white,fontSize: 11)), leading: new Image.asset("images/janelas.png", height: _heigthNavigatorImages-9), tileColor: _temaApp.cprimaria,),);
                       break;
                     case 1:
-                      return new ListTile(title: Text("Playstation",style: TextStyle(fontFamily: "zrnic",color: Colors.white)), leading:  new Image.asset("images/playstation.png", height: _heigthNavigatorImages), tileColor: _temaApp.csecundaria);
+                      return new GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Playstation()));},child: ListTile(title: Text("Playstation",style: TextStyle(fontFamily: "zrnic",color: Colors.white)), leading:  new Image.asset("images/playstation.png", height: _heigthNavigatorImages), tileColor: _temaApp.csecundaria),);
                       break;
                     case 2:
-                      return new ListTile(title: Text("XBOX",style: TextStyle(fontFamily: "microsoftXbox",color: Colors.white)), leading:  new Image.asset("images/xbox.png",  height: _heigthNavigatorImages), tileColor: _temaApp.cprimaria);
+                      return new GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Xbox()));},child: ListTile(title: Text("XBOX",style: TextStyle(fontFamily: "microsoftXbox",color: Colors.white)), leading:  new Image.asset("images/xbox.png",  height: _heigthNavigatorImages), tileColor: _temaApp.cprimaria),);
                       break;
                     case 3:
-                      return new ListTile(title: Text("Mobile",style: TextStyle(fontFamily: _temaApp.fontNavigator ,color: Colors.white)), leading:  new Image.asset("images/aplicativo-movel.png",  height: _heigthNavigatorImages),tileColor: _temaApp.csecundaria);
+                      return new GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Mobile()));},child: ListTile(title: Text("Mobile",style: TextStyle(fontFamily: _temaApp.fontNavigator ,color: Colors.white)), leading:  new Image.asset("images/aplicativo-movel.png",  height: _heigthNavigatorImages),tileColor: _temaApp.csecundaria),);
                       break;
                     default:
                       return new ListTile(leading: new Icon(Icons.error), title: Text("Ocorreu um erro"));
