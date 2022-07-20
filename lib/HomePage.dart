@@ -4,6 +4,7 @@ import 'package:guia_de_jogos_gratis/Telas/Mobile.dart';
 import 'package:guia_de_jogos_gratis/Telas/Playstation.dart';
 import 'package:guia_de_jogos_gratis/Telas/Windows.dart';
 import 'package:guia_de_jogos_gratis/Telas/Xbox.dart';
+import 'package:guia_de_jogos_gratis/Widgets/BarApp.dart';
 import 'package:guia_de_jogos_gratis/Widgets/CardWiget.dart';
 import 'package:guia_de_jogos_gratis/Utils/ThemeConfig.dart';
 
@@ -89,35 +90,24 @@ class _HomePageState extends State<HomePage> {
       ),
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
-          child: AppBar(
-              title: Container(
-                  height: 400,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: EdgeInsets.only(top: 32,right: 57), child: Image.asset("images/logo.gif", height: 120)),
-                    ],
-                  )
-              ),
-              backgroundColor : _temaApp.cprimaria,
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: _temaApp.csecundaria,
-              )
-          )
+          child: BarApp()
       ),
       body: Container(
+        padding: EdgeInsets.all(10),
         color: _temaApp.csecundaria,
-        child: ListView.builder(
-            itemCount: _conteudo.length,
-            itemBuilder: (context, index){
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CardWidget()
-                  ],
-                );
-            }
-        )
+        child:
+           GridView.builder(
+                itemCount: _conteudo.length,
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 3 / 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                ),
+                itemBuilder: (context,index){
+                  return Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white));
+                }
+            )
       ),
       bottomNavigationBar: BottomNavigationBar(
 
@@ -138,7 +128,6 @@ class _HomePageState extends State<HomePage> {
         //itens do bottom navigation
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.emoji_emotions_outlined, size: 30,), label: "Em alta", backgroundColor: _temaApp.cprimaria),
-          BottomNavigationBarItem(icon: Icon(Icons.gamepad, size: 30,), label: "Principal", backgroundColor: _temaApp.cprimaria),
           BottomNavigationBarItem(icon: Icon(Icons.play_circle, size: 30,), label: "Gameplays", backgroundColor: _temaApp.cprimaria)
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../Utils/ThemeConfig.dart';
+import '../Widgets/BarApp.dart';
 import '../Widgets/CardWiget.dart';
 import 'Mobile.dart';
 import 'Playstation.dart';
@@ -84,21 +85,7 @@ class _WindowsState extends State<Windows> {
       ),
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
-          child: AppBar(
-              title: Container(
-                  height: 400,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: EdgeInsets.only(top: 32,right: 57), child: Image.asset("images/logo.gif", height: 120)),
-                    ],
-                  )
-              ),
-              backgroundColor : _temaApp.cprimaria,
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: _temaApp.csecundaria,
-              )
-          )
+          child: BarApp()
       ),
       body: Container(
           color: _temaApp.csecundaria,
