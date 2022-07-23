@@ -107,13 +107,15 @@ class _WindowsState extends State<Windows> {
                 case ConnectionState.active:
                 case ConnectionState.done:
                  if(snapshot.hasData){
+
                    return ListView.builder(
                        itemCount: snapshot.data!.length,
                        itemBuilder: (context, index){
+                         Game jogo = snapshot.data![index];
                          return Column(
                            crossAxisAlignment: CrossAxisAlignment.stretch,
                            children: [
-                             CardWidget(dados: snapshot.data![index])
+                             CardWidget(dados: jogo)
                            ],
                          );
                        }
