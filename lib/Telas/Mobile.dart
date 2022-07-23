@@ -95,7 +95,7 @@ class _MobileState extends State<Mobile> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CardWidget()
+                    //CardWidget()
                   ],
                 );
               }

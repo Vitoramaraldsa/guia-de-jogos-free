@@ -95,7 +95,7 @@ class _XboxState extends State<Xbox> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CardWidget()
+                    //CardWidget()
                   ],
                 );
               }

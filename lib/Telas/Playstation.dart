@@ -95,7 +95,7 @@ class _PlaystationState extends State<Playstation> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CardWidget()
+                    //CardWidget()
                   ],
                 );
               }

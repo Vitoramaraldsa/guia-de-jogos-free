@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guia_de_jogos_gratis/Endpoints/GetGames.dart';
 import 'package:guia_de_jogos_gratis/Telas/Mobile.dart';
 import 'package:guia_de_jogos_gratis/Telas/Playstation.dart';
 import 'package:guia_de_jogos_gratis/Telas/Windows.dart';
@@ -8,12 +9,15 @@ import 'package:guia_de_jogos_gratis/Widgets/BarApp.dart';
 import 'package:guia_de_jogos_gratis/Widgets/CardWiget.dart';
 import 'package:guia_de_jogos_gratis/Utils/ThemeConfig.dart';
 
+import 'Model/Game.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 
 class _HomePageState extends State<HomePage> {
 
@@ -24,8 +28,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    //estilização da tela
+    //teste
+    //GetGames apiconfg = GetGames();
+    //print(apiconfg.getAllGames().toString());
 
+    //estilização da tela
     double _heigthNavigatorImages = 37;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: _temaApp.cnavigator));
 
@@ -127,7 +134,7 @@ class _HomePageState extends State<HomePage> {
 
         //itens do bottom navigation
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.emoji_emotions_outlined, size: 30,), label: "Em alta", backgroundColor: _temaApp.cprimaria),
+          BottomNavigationBarItem(icon: Icon(Icons.emoji_emotions_outlined, size: 30,), label: "Descubra", backgroundColor: _temaApp.cprimaria),
           BottomNavigationBarItem(icon: Icon(Icons.play_circle, size: 30,), label: "Gameplays", backgroundColor: _temaApp.cprimaria)
         ],
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guia_de_jogos_gratis/Endpoints/GetGames.dart';
+import 'package:guia_de_jogos_gratis/Model/Game.dart';
 
 import '../Utils/ThemeConfig.dart';
 import '../Widgets/BarApp.dart';
@@ -19,6 +21,12 @@ class _WindowsState extends State<Windows> {
   ThemeConfig _temaApp = ThemeConfig();
   @override
   Widget build(BuildContext context) {
+
+    //build do future
+    _listar(){
+      GetGames apiConfig = GetGames();
+      return apiConfig.getAllGames();
+    }
 
     //estilização da tela
 
@@ -89,16 +97,31 @@ class _WindowsState extends State<Windows> {
       ),
       body: Container(
           color: _temaApp.csecundaria,
-          child: ListView.builder(
-              itemCount: _conteudo.length,
-              itemBuilder: (context, index){
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CardWidget()
-                  ],
-                );
+          child: FutureBuilder<List<Game>?>(
+            future: _listar(),
+            builder: (context,snapshot){
+              switch(snapshot.connectionState){
+                case ConnectionState.none:
+                case ConnectionState.waiting:
+                 return Center(child: CircularProgressIndicator());
+                case ConnectionState.active:
+                case ConnectionState.done:
+                 if(snapshot.hasData){
+                   return ListView.builder(
+                       itemCount: snapshot.data!.length,
+                       itemBuilder: (context, index){
+                         return Column(
+                           crossAxisAlignment: CrossAxisAlignment.stretch,
+                           children: [
+                             CardWidget(dados: snapshot.data![index])
+                           ],
+                         );
+                       }
+                   );
+                 }
               }
+              return Center(child: Text(""));
+            },
           )
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:guia_de_jogos_gratis/Model/Game.dart';
 
 class CardWidget extends StatefulWidget {
-  const CardWidget({Key? key}) : super(key: key);
+  final dados;
+  const CardWidget({Key? key,required this.dados}) : super(key: key);
 
   @override
   State<CardWidget> createState() => _CardWidgetState();
@@ -43,6 +45,7 @@ void _configurandoModalBottomSheet(context){
 class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
+    Game jogo = widget.dados;
     return Container(
       padding: EdgeInsets.only(top: 15 ,left: 25, right: 25),
       child: Card(
@@ -58,7 +61,7 @@ class _CardWidgetState extends State<CardWidget> {
             fit: StackFit.passthrough,
             children: [
               Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), image: DecorationImage(image: NetworkImage("https://www.freetogame.com/g/519/thumbnail.jpg"), fit: BoxFit.cover)),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), image: DecorationImage(image: NetworkImage(jogo.thumbnail), fit: BoxFit.cover)),
                 width: 300,
                 height: 150,
               ),
@@ -78,7 +81,7 @@ class _CardWidgetState extends State<CardWidget> {
                 height: 150,
                 child: Padding(
                     padding: EdgeInsets.only(top: 110,left: 25),
-                    child: Text("Nome do jogo", style: TextStyle(color: Colors.white.withOpacity(0.9), fontFamily: "Helvetica", fontSize: 20)),
+                    child: Text(jogo.title, style: TextStyle(color: Colors.white.withOpacity(0.9), fontFamily: "Helvetica", fontSize: 20)),
                 ),
               )
             ],
