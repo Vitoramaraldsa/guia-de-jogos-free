@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:guia_de_jogos_gratis/Endpoints/GetGames.dart';
 import 'package:guia_de_jogos_gratis/Telas/Mobile.dart';
 import 'package:guia_de_jogos_gratis/Telas/Playstation.dart';
+import 'package:guia_de_jogos_gratis/Telas/TelaDescubra.dart';
+import 'package:guia_de_jogos_gratis/Telas/TelaGameplays.dart';
 import 'package:guia_de_jogos_gratis/Telas/Windows.dart';
 import 'package:guia_de_jogos_gratis/Telas/Xbox.dart';
 import 'package:guia_de_jogos_gratis/Widgets/BarApp.dart';
@@ -38,6 +40,11 @@ class _HomePageState extends State<HomePage> {
 
     //lista
     List<String> _conteudo = ["assasins creed", "league of legends", "need for speed", "grand theft auto", "teste"];
+
+    List<Widget> telas = [
+      TelaDescubra(),
+      TelaGameplays(),
+    ];
 
     return Scaffold(
       drawer: Drawer(
@@ -102,19 +109,7 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         padding: EdgeInsets.all(10),
         color: _temaApp.csecundaria,
-        child:
-           GridView.builder(
-                itemCount: _conteudo.length,
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 3 / 3,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                ),
-                itemBuilder: (context,index){
-                  return Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white));
-                }
-            )
+        child: telas[_indiceAtual]
       ),
       bottomNavigationBar: BottomNavigationBar(
 
