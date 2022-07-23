@@ -57,6 +57,7 @@ class _CardWidgetState extends State<CardWidget> {
                           Container(
                             width: 190,
                             child: Text(
+                              overflow: TextOverflow.ellipsis,
                               widget.dados.title,
                               style: TextStyle(
                                   color: Colors.white,
@@ -68,6 +69,7 @@ class _CardWidgetState extends State<CardWidget> {
                           Padding(
                             padding: EdgeInsets.only(top: 10),
                             child: RichText(
+                                overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 text: TextSpan(
                                     style: TextStyle(fontFamily: "helvetica"),
@@ -78,7 +80,7 @@ class _CardWidgetState extends State<CardWidget> {
                                         color: Colors.white,
                                         size: 18,
                                       )),
-                                      TextSpan(text: " Plataformas:  "),
+                                      TextSpan(text: " Plataformas:  ",),
                                       TextSpan(text: widget.dados.platform)
                                     ])),
                           ),
@@ -99,21 +101,26 @@ class _CardWidgetState extends State<CardWidget> {
                                       TextSpan(text: widget.dados.genre)
                                     ])),
                           ),
-                          Padding(
-                              padding: EdgeInsets.only(top: 10),
-                              child: RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(
-                                      style: TextStyle(fontFamily: "helvetica"),
-                                      children: [
-                                        WidgetSpan(
-                                            child: Icon(
-                                          Icons.developer_mode,
-                                          color: Colors.white,
-                                          size: 18,
-                                        )),
-                                        TextSpan(text: widget.dados.developer)
-                                      ]))),
+                          Container(
+                            width: 190,
+                            child: Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: RichText(
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    text: TextSpan(
+                                        style: TextStyle(fontFamily: "helvetica"),
+                                        children: [
+                                          WidgetSpan(
+                                              child: Icon(
+                                                Icons.developer_mode,
+                                                color: Colors.white,
+                                                size: 18,
+                                              )),
+                                          TextSpan(text: widget.dados.developer)
+                                        ]))),
+                          ),
+
                           GestureDetector(
                             onTap: (){
                               _launchUrl();
