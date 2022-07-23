@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   //configurações manuais de tema
   ThemeConfig _temaApp = ThemeConfig();
-  var _indiceAtual = 1;
+  var _indiceAtual = 0;
 
   @override
   Widget build(BuildContext context) {
