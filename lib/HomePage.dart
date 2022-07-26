@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:guia_de_jogos_gratis/Endpoints/GetGames.dart';
-import 'package:guia_de_jogos_gratis/Telas/Mobile.dart';
-import 'package:guia_de_jogos_gratis/Telas/Playstation.dart';
+import 'package:guia_de_jogos_gratis/Endpoints/GetNews.dart';
 import 'package:guia_de_jogos_gratis/Telas/TelaDescubra.dart';
-import 'package:guia_de_jogos_gratis/Telas/TelaGameplays.dart';
-import 'package:guia_de_jogos_gratis/Telas/Windows.dart';
-import 'package:guia_de_jogos_gratis/Telas/Xbox.dart';
+import 'package:guia_de_jogos_gratis/Telas/TelaGeneros.dart';
+import 'package:guia_de_jogos_gratis/Telas/TelaNoticias.dart';
 import 'package:guia_de_jogos_gratis/Widgets/BarApp.dart';
-import 'package:guia_de_jogos_gratis/Widgets/CardWiget.dart';
 import 'package:guia_de_jogos_gratis/Utils/ThemeConfig.dart';
 
 import 'Model/Game.dart';
@@ -33,6 +29,8 @@ class _HomePageState extends State<HomePage> {
     //teste
     //GetGames apiconfg = GetGames();
     //print(apiconfg.getAllGames().toString());
+    //GetNews New = GetNews();
+    //New.getAllGames();
 
     //estilização da tela
     double _heigthNavigatorImages = 37;
@@ -43,11 +41,12 @@ class _HomePageState extends State<HomePage> {
 
     List<Widget> telas = [
       TelaDescubra(),
-      TelaGameplays(),
+      TelaGeneros(),
+      TelaNoticias(),
     ];
 
     return Scaffold(
-      drawer: Drawer(
+      /*drawer: Drawer(
         backgroundColor: _temaApp.csecundaria,
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -101,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
-      ),
+      ),*/
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
           child: BarApp()
@@ -129,8 +128,9 @@ class _HomePageState extends State<HomePage> {
 
         //itens do bottom navigation
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.emoji_emotions_outlined, size: 30,), label: "Descubra", backgroundColor: _temaApp.cprimaria),
-          BottomNavigationBarItem(icon: Icon(Icons.play_circle, size: 30,), label: "Gameplays", backgroundColor: _temaApp.cprimaria)
+          BottomNavigationBarItem(icon: Icon(Icons.videogame_asset, size: 30,), label: "Todos os Jogos", backgroundColor: _temaApp.cprimaria),
+          BottomNavigationBarItem(icon: Icon(Icons.star, size: 30,), label: "Generos", backgroundColor: _temaApp.cprimaria),
+          BottomNavigationBarItem(icon: Icon(Icons.newspaper, size: 30,), label: "Notícias", backgroundColor: _temaApp.cprimaria)
         ],
       ),
     );

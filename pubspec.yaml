@@ -35,6 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.4
   url_launcher: ^6.1.5
+  any_link_preview: ^2.0.9
 
 
 dev_dependencies:
@@ -90,6 +91,7 @@ flutter:
     - images/playstation.png
     - images/janelas.png
     - images/xbox.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

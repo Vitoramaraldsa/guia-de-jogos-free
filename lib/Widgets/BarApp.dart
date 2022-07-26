@@ -18,7 +18,7 @@ class _BarAppState extends State<BarApp> {
     return AppBar(
         title: GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+              //Navigator.pop(context, MaterialPageRoute(builder: (context) => HomePage()));
             },
             child: Container(
                 height: 400,
@@ -26,7 +26,7 @@ class _BarAppState extends State<BarApp> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(padding: EdgeInsets.only(top: 32,right: 57), child: Image.asset("images/logo.gif", height: 120)),
+                    Padding(padding: EdgeInsets.only(top: 32), child: Image.asset("images/logo.gif", height: 120)),
                   ],
                 )
             )

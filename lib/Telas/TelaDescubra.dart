@@ -13,7 +13,7 @@ class TelaDescubra extends StatefulWidget {
 
 class _TelaDescubraState extends State<TelaDescubra> {
   //build do future
-  _listar(){
+  _listar() {
     GetGames apiConfig = GetGames();
     return apiConfig.getAllGames();
   }
@@ -22,33 +22,33 @@ class _TelaDescubraState extends State<TelaDescubra> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Game>?>(
-      future: _listar(),
-      builder: (context,snapshot){
-        switch(snapshot.connectionState){
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return Center(child: CircularProgressIndicator());
-          case ConnectionState.active:
-          case ConnectionState.done:
-            if(snapshot.hasData){
-
-              return ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index){
-                    Game jogo = snapshot.data![index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        CardWidget(dados: jogo)
-                      ],
-                    );
-                  }
-              );
+    return
+        FutureBuilder<List<Game>?>(
+          future: _listar(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+              case ConnectionState.waiting:
+                return Center(child: CircularProgressIndicator());
+              case ConnectionState.active:
+              case ConnectionState.done:
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      physics: ScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        Game jogo = snapshot.data![index];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [CardWidget(dados: jogo)],
+                        );
+                      });
+                }
             }
-        }
-        return Center(child: Text(""));
-      },
-    );
+            return Center(child: Text("Nenhum conteúdo disponível."));
+          },
+        );
   }
 }

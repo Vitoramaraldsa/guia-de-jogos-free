@@ -192,7 +192,7 @@ class _CardWidgetState extends State<CardWidget> {
                     height: 150,
                     child: Padding(
                       padding: EdgeInsets.only(top: 110, left: 25),
-                      child: Text(widget.dados.title,
+                      child: Text(widget.dados.title, overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Colors.white.withOpacity(0.9),
                               fontFamily: "Helvetica",

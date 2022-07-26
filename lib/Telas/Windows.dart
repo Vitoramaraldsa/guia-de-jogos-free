@@ -25,7 +25,7 @@ class _WindowsState extends State<Windows> {
     //build do future
     _listar(){
       GetGames apiConfig = GetGames();
-      return apiConfig.getAllGames();
+      return apiConfig.getAllGamesPlatform("pc");
     }
 
     //estilização da tela
