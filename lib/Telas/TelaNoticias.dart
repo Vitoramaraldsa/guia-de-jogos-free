@@ -17,11 +17,10 @@ class TelaNoticias extends StatefulWidget {
 class _TelaNoticiasState extends State<TelaNoticias> {
 
 
-
-
-  Future<List<New>?>_listar() async{
+  Future<List<New>?> _listar() async{
     GetNews News = GetNews();
-    return News.getAllNews();
+    print("=================");
+    return await News.getAllNews();
   }
 
   @override
@@ -43,7 +42,7 @@ class _TelaNoticiasState extends State<TelaNoticias> {
                     return Container(decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20), color: Colors.white),
                         child: AnyLinkPreview(
-                          link: "${snapshot.data?[index].link}",
+                          link: "${snapshot.data![index].link}",
                           displayDirection: UIDirection.uiDirectionVertical,
                           showMultimedia: true,
                           bodyMaxLines: 5,
