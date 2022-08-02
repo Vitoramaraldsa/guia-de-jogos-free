@@ -19,8 +19,8 @@ Future<List<Game>?> getAllGames() async{
     }
   }
 
-  Future<List<Game>?> getAllGamesPlatform(String platform) async{
-    http.Response response = await http.get(Uri.parse(URL_BASE+"?platform=${platform}"));
+  Future<List<Game>?> getAllGamesCategory(String cat) async{
+    http.Response response = await http.get(Uri.parse(URL_BASE+"?category=${cat}"));
     if (response.statusCode == 200) {
       List<dynamic> dadosJson = jsonDecode(response.body);
       List<Game> listaGames = dadosJson.map<Game>((map) {

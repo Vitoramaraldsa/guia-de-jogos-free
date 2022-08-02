@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guia_de_jogos_gratis/Utils/ThemeConfig.dart';
 import 'package:guia_de_jogos_gratis/Widgets/CardWiget.dart';
 
 import '../Endpoints/GetGames.dart';
@@ -13,16 +14,17 @@ class TelaDescubra extends StatefulWidget {
 
 class _TelaDescubraState extends State<TelaDescubra> {
   int indexGender = 0;
+  ThemeConfig _temaApp = ThemeConfig();
 
   //build do future
   _listar() {
     GetGames apiConfig = GetGames();
-
-    //caso o genero seja litar todos gêneros
-    if (indexGender == 0) {
       return apiConfig.getAllGames();
+
+
     }
-  }
+
+
 
   //estilização da tela
   @override
@@ -72,7 +74,9 @@ class _TelaDescubraState extends State<TelaDescubra> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                     child: Container(
                       height: 30,
                       padding: EdgeInsets.only(left: 15, right: 15, top: 6),
@@ -82,7 +86,10 @@ class _TelaDescubraState extends State<TelaDescubra> {
                       child: Text("TIRO", style: TextStyle(color: Colors.white)),
                     )),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+
+                    },
                     child: Container(
                       height: 30,
                       padding: EdgeInsets.only(left: 15, right: 15, top: 6),

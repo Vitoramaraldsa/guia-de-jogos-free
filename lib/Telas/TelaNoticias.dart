@@ -2,6 +2,7 @@ import 'package:any_link_preview/any_link_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:guia_de_jogos_gratis/Endpoints/GetNews.dart';
 import 'package:guia_de_jogos_gratis/Telas/TelaGeneros.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Model/New.dart';
 
@@ -22,6 +23,11 @@ class _TelaNoticiasState extends State<TelaNoticias> {
     print("=================");
     return await News.getAllNews();
   }
+  Future<void> _launchUrl(Uri link) async {
+    if (!await launchUrl(link)) {
+      throw 'Could not launch';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +37,7 @@ class _TelaNoticiasState extends State<TelaNoticias> {
           switch(snapshot.connectionState){
             case ConnectionState.done:
               return GridView.builder(
+                padding: EdgeInsets.only(left: 10,right: 10),
                   itemCount: snapshot.data!.length,
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
@@ -65,7 +72,9 @@ class _TelaNoticiasState extends State<TelaNoticias> {
                           borderRadius: 12,
                           removeElevation: false,
                           boxShadow: [BoxShadow(blurRadius: 3, color: Colors.grey)],
-                          onTap: (){}, // This disables tap event
+                          onTap: (){
+                            launchUrl(Uri.parse(snapshot.data![index].link));
+                          }, // This disables tap event
                         )
                     );
                   }

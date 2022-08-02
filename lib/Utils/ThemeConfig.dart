@@ -13,5 +13,6 @@ class ThemeConfig {
   String get fontNavigator => _fontNavigator;
 
   Color get csecundaria => _csecundaria;
+
 }
 
