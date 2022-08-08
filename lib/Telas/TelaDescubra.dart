@@ -14,12 +14,13 @@ class TelaDescubra extends StatefulWidget {
 
 class _TelaDescubraState extends State<TelaDescubra> {
   int indexGender = 0;
+  String cat = "";
   ThemeConfig _temaApp = ThemeConfig();
 
   //build do future
   _listar() {
     GetGames apiConfig = GetGames();
-      return apiConfig.getAllGames();
+      return apiConfig.getAllGamesCategory(cat);
 
 
     }
@@ -75,6 +76,26 @@ class _TelaDescubraState extends State<TelaDescubra> {
               children: [
                 TextButton(
                     onPressed: () {
+                      cat = "";
+                      setState(() {
+
+                      });
+
+                    },
+                    child: Container(
+                      height: 30,
+                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Text("Todos", style: TextStyle(color: Colors.white)),
+                    )),
+                TextButton(
+                    onPressed: () {
+                      cat = "shooter";
+                      setState(() {
+
+                      });
 
                     },
                     child: Container(
@@ -87,8 +108,10 @@ class _TelaDescubraState extends State<TelaDescubra> {
                     )),
                 TextButton(
                     onPressed: () {
+                      cat = "mmorpg";
+                      setState(() {
 
-
+                      });
                     },
                     child: Container(
                       height: 30,
@@ -99,7 +122,12 @@ class _TelaDescubraState extends State<TelaDescubra> {
                       child: Text("RPG", style: TextStyle(color: Colors.white)),
                     )),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cat = "racing";
+                      setState(() {
+
+                      });
+                    },
                     child: Container(
                       height: 30,
                       padding: EdgeInsets.only(left: 15, right: 15, top: 6),
