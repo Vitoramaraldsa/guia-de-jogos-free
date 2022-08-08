@@ -15,17 +15,54 @@ class TelaDescubra extends StatefulWidget {
 class _TelaDescubraState extends State<TelaDescubra> {
   int indexGender = 0;
   String cat = "";
+
   ThemeConfig _temaApp = ThemeConfig();
+
+  var listaPesquisa = [
+    "",
+    "mmorpg",
+    "shooter",
+    "strategy",
+    "moba",
+    "racing",
+    "sports",
+    "social",
+    "sandbox",
+    "open-world",
+    "survival",
+    "pvp",
+    "pve",
+    "pixel",
+    "voxel",
+    "zombie",
+    "turn-based",
+    "first-person"
+  ];
+  var listaExibicao = [
+    "Todos",
+    "Mmorpg",
+    "Tiro",
+    "Estratégia",
+    "Moba",
+    "Corrida",
+    "Esportes",
+    "Social",
+    "Sandbox",
+    "Mundo Aberto",
+    "Sobrevivência",
+    "PVP",
+    "Pixel",
+    "Voxel",
+    "Zumbi",
+    "Baseado em turnos",
+    "Primeira pessoa"
+  ];
 
   //build do future
   _listar() {
     GetGames apiConfig = GetGames();
-      return apiConfig.getAllGamesCategory(cat);
-
-
-    }
-
-
+    return apiConfig.getAllGamesCategory(cat);
+  }
 
   //estilização da tela
   @override
@@ -63,113 +100,42 @@ class _TelaDescubraState extends State<TelaDescubra> {
           ),
         ),
         Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(10),
-                  bottomLeft: Radius.circular(10)),
-              color: Colors.blue),
-          height: 50,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      cat = "";
-                      setState(() {
-
-                      });
-
-                    },
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("Todos", style: TextStyle(color: Colors.white)),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      cat = "shooter";
-                      setState(() {
-
-                      });
-
-                    },
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("TIRO", style: TextStyle(color: Colors.white)),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      cat = "mmorpg";
-                      setState(() {
-
-                      });
-                    },
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("RPG", style: TextStyle(color: Colors.white)),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      cat = "racing";
-                      setState(() {
-
-                      });
-                    },
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("CORRIDA", style: TextStyle(color: Colors.white)),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("LUTA", style: TextStyle(color: Colors.white)),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("BATTLE ROYALE", style: TextStyle(color: Colors.white)),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: Container(
-                      height: 30,
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 6),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text("ESTRATÉGIA", style: TextStyle(color: Colors.white)),
-                    )),
-              ],
-            ),
-          )
-        ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10)),
+                color: Colors.blue),
+            height: 50,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ListView.builder(
+                      physics: ScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: listaExibicao.length,
+                      itemBuilder: (context, index) {
+                        return TextButton(
+                            onPressed: () {
+                              cat = "${listaPesquisa[index]}";
+                              setState(() {});
+                            },
+                            child: Container(
+                              height: 30,
+                              padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 6),
+                              decoration: BoxDecoration(
+                                  color: Colors.deepPurple,
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: Text("${listaExibicao[index]}",
+                                  style: TextStyle(color: Colors.white)),
+                            ));
+                      })
+                ],
+              ),
+            )),
       ],
     );
   }

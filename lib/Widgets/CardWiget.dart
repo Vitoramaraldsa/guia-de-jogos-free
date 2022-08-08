@@ -18,6 +18,7 @@ class _CardWidgetState extends State<CardWidget> {
       throw 'Could not launch';
     }
   }
+
   void _configurandoModalBottomSheet(context) {
     showModalBottomSheet(
         shape: RoundedRectangleBorder(
@@ -68,21 +69,45 @@ class _CardWidgetState extends State<CardWidget> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 10),
-                            child: RichText(
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(fontFamily: "helvetica"),
-                                    children: [
-                                      WidgetSpan(
-                                          child: Icon(
-                                        Icons.gamepad,
-                                        color: Colors.white,
-                                        size: 18,
-                                      )),
-                                      TextSpan(text: " Plataformas:  ",),
-                                      TextSpan(text: widget.dados.platform)
-                                    ])),
+                            child: Container(
+                                width: 190,
+                                child: GestureDetector(
+                                    onTap: () {
+                                      showDialog(
+                                          context: (context),
+                                          builder: ((context) {
+                                            return AlertDialog(
+                                              title: Text("Plataformas: ",
+                                                  style: TextStyle(
+                                                      color: Colors
+                                                          .deepPurpleAccent)),
+                                              content: Text(
+                                                  "${widget.dados.platform}",
+                                                  style: TextStyle(
+                                                      color: Colors
+                                                          .deepPurpleAccent)),
+                                            );
+                                          }));
+                                    },
+                                    child: RichText(
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.left,
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: "helvetica"),
+                                            children: [
+                                              WidgetSpan(
+                                                  child: Icon(
+                                                Icons.gamepad,
+                                                color: Colors.white,
+                                                size: 18,
+                                              )),
+                                              TextSpan(
+                                                text: " Plataformas:  ",
+                                              ),
+                                              TextSpan(
+                                                  text: widget.dados.platform)
+                                            ])))),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 10),
@@ -109,22 +134,22 @@ class _CardWidgetState extends State<CardWidget> {
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
                                     text: TextSpan(
-                                        style: TextStyle(fontFamily: "helvetica"),
+                                        style:
+                                            TextStyle(fontFamily: "helvetica"),
                                         children: [
                                           WidgetSpan(
                                               child: Icon(
-                                                Icons.developer_mode,
-                                                color: Colors.white,
-                                                size: 18,
-                                              )),
+                                            Icons.developer_mode,
+                                            color: Colors.white,
+                                            size: 18,
+                                          )),
                                           TextSpan(text: widget.dados.developer)
                                         ]))),
                           ),
-
                           GestureDetector(
-                            onTap: (){
-                              _launchUrl();
-                            },
+                              onTap: () {
+                                _launchUrl();
+                              },
                               child: Padding(
                                   padding: EdgeInsets.only(top: 10),
                                   child: RichText(
@@ -192,7 +217,8 @@ class _CardWidgetState extends State<CardWidget> {
                     height: 150,
                     child: Padding(
                       padding: EdgeInsets.only(top: 110, left: 25),
-                      child: Text(widget.dados.title, overflow: TextOverflow.ellipsis,
+                      child: Text(widget.dados.title,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Colors.white.withOpacity(0.9),
                               fontFamily: "Helvetica",
